@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -2494,6 +2493,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 .append("<strong>Your message has been sent. </strong>");
               $('#success > .alert-success')
                 .append('</div>');
+              
+                tracker.send("event", {
+                category: "formulário",
+                action: "envio",
+                label: "sucesso",
+                });
 
               //clear all fields
               $('#contactForm').trigger("reset");
@@ -2506,8 +2511,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
               $('#success > .alert-danger').append('</div>');
               //clear all fields
-              $('#contactForm').trigger("reset");
-            },
+              $('#contactForm').trigger("reset");          },
           });
         },
         filter: function() {
