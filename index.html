@@ -1579,13 +1579,11 @@ botaoOrcamento.addEventListener("click", function(evt){
 
 function formHandler (evt){
   var alteredInputName = evt.target.getAttribute("id");
-  var alteredInputValue = document.querySelector("form input[id=name]").value
 
   tracker.send("event", {
       category: "formulário",
       action: "preenchimento",
-      label: alteredInputName,
-      value: alteredInputValue
+      label: alteredInputName
   })
 }
 
