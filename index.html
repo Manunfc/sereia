@@ -1546,6 +1546,139 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     window["tracker"].send("pageview", {});
 
+    //---------------------EVENTOS--------------------------------------------------------------------------------------------------------------------------------
+
+//--------------Rolou a página até o final--------------------------------------------------------------------------------------------------------------------
+function scrollHandler (evt){
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const scrolled = window.scrollY;
+  
+  if(Math.ceil(scrolled) == scrollable){
+      tracker.send("event", {
+          category: "scroll",
+          action: "rolou a página até o final",
+      });
+      window.removeEventListener("scroll", scrollHandler);
+  };
+};
+
+window.addEventListener("scroll", scrollHandler);
+
+//-------------Visualizou o formulário-----------------------------------------------------------------------------------------------------------------------
+
+var botaoOrcamento = document.querySelector("a.page-scroll.btn.btn-xl");
+
+botaoOrcamento.addEventListener("click", function(evt){
+    tracker.send("event", {
+        category: "clique",
+        action: "Visualizou o formulário",
+    });
+});
+
+//--------------Preencheu o formulário-----------------------------------------------------------------------------------------------------------------------
+
+function formHandler (evt){
+  var alteredInputName = evt.target.getAttribute("id");
+  var alteredInputValue = document.querySelector("form input[id=name]").value
+
+  tracker.send("event", {
+      category: "formulário",
+      action: "preenchimento",
+      label: alteredInputName,
+      value: alteredInputValue
+  })
+}
+
+document.querySelector("form").addEventListener("change", formHandler);
+
+//-----------Interagiu com o menu superior------------------------------------------------------------------------------------------------------------------
+var botaoMenu = document.querySelector("button.navbar-toggle");
+
+botaoMenu.addEventListener("click", function(evt){
+    tracker.send("event", {
+        category: "clique",
+        action: "interagiu com o menu"
+    });
+});
+
+//----------clicou no link de mídias sociais----------------------------------------------------------------------------------------------------------------
+
+var arrayTwitter = document.querySelectorAll("i.fa.fa-twitter");
+
+for (let j = 0; j < arrayTwitter.length; j++){
+  arrayTwitter[j].addEventListener("click", function(){
+    if(j<=2){
+      tracker.send("event", {
+        category: "clique",
+        action: "mídias sociais: Twitter",
+        label: "Dev",
+        value: arrayTwitter[j].parentElement.parentElement.parentElement.parentElement.innerText.split('\n')[0]
+      })
+    }
+    else if(j=3){
+      tracker.send("event", {
+        category: "clique",
+        action: "mídias sociais: Twitter",
+        label: "Site"
+      })
+    }
+  })
+}
+
+var arrayFacebook = document.querySelectorAll("i.fa.fa-facebook");
+
+for (let j = 0; j < arrayFacebook.length; j++){
+  arrayFacebook[j].addEventListener("click", function(){
+    if(j<=2){
+      tracker.send("event", {
+        category: "clique",
+        action: "mídias sociais: Facebook",
+        label: "Dev",
+        value: arrayFacebook[j].parentElement.parentElement.parentElement.parentElement.innerText.split('\n')[0]
+      })
+    }
+    else if(j=3){
+      tracker.send("event", {
+        category: "clique",
+        action: "mídias sociais: Facebook",
+        label: "Site"
+      })
+    }
+  })
+}
+
+var arrayLinkedin = document.querySelectorAll("i.fa.fa-linkedin");
+
+for (let j = 0; j < arrayLinkedin.length; j++){
+  arrayLinkedin[j].addEventListener("click", function(){
+    if(j<=2){
+      tracker.send("event", {
+        category: "clique",
+        action: "mídias sociais: Linkedin",
+        label: "Dev",
+        value: arrayLinkedin[j].parentElement.parentElement.parentElement.parentElement.innerText.split('\n')[0]
+      })
+    }
+    else if(j=3){
+      tracker.send("event", {
+        category: "clique",
+        action: "mídias sociais: Linkedin",
+        label: "Site"
+      })
+    }
+  })
+}
+//----------Passou mais de um minuto no site---------------------------------------------------------------------------------------------------------------
+
+setTimeout(function(){
+	tracker.send("event", {
+    category: "Tempo",
+    action: "Passou mais de um minuto no site",
+    });
+},60000);
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+
     /* jqBootstrapValidation
      * A plugin for automating validation on Twitter Bootstrap formatted forms.
      *
@@ -2523,7 +2656,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 .append("<strong>Your message has been sent. </strong>");
               $('#success > .alert-success')
                 .append('</div>');
-              
+
               //-------------TAG DE ENVIO DO FORMULÁRIO COM SUCESSO---------------               
               tracker.send("event", {
               category: "formulário",
