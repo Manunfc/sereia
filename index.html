@@ -909,40 +909,6 @@
     }
   </style>
 
-<!-- define o tracker e dispara o pageview -->
-  <script>
-    //tn: tracker name
-    //tc: tracher code
-    //cn: cookie name
-    (function(tn, tc, cn) {
-      window[tn] = window[tn] || {
-        status: "loading_code",
-        code: tc,
-        cookieName: cn,
-        queue: [],
-        send: function(a, d){
-          d = d || {};
-          window[tn].queue.push({
-            a: a,
-            d: Object.assign(d, {timestamp: Date.now()})
-          });
-        }
-      };
-
-      if(window[tn].status == "loading_code") {
-        window[tn].status = "waiting_script";
-        var s = document.createElement("script");
-        s.async = true;
-        s.src = "https://script.google.com/macros/s/" + tc + "/dev/library?tn=" + tn;
-        document.body.appendChild(s);
-      }
-    })("tracker", "AKfycbwCiDp033Z2WvdvUQ_3ILbcjIReEzaAh74kjUgXA4j7VLAn3VErMno9xtkupKr0IK882Q", "_trackerCk");
-
-    window["tracker"].send("pageview", {});
-
-  </script>
-  <!-- final do código que define o tracker e dispara o pageview -->
-  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -2527,12 +2493,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 .append("<strong>Your message has been sent. </strong>");
               $('#success > .alert-success')
                 .append('</div>');
-              
-                tracker.send("event", {
-                category: "formulário",
-                action: "envio",
-                label: "sucesso",
-                });
+              console.log("sucesso")
 
               //clear all fields
               $('#contactForm').trigger("reset");
@@ -2545,7 +2506,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
               $('#success > .alert-danger').append('</div>');
               //clear all fields
-              $('#contactForm').trigger("reset");          },
+              $('#contactForm').trigger("reset");
+            },
           });
         },
         filter: function() {
