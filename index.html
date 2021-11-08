@@ -2523,14 +2523,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 .append("<strong>Your message has been sent. </strong>");
               $('#success > .alert-success')
                 .append('</div>');
-              console.log("sucesso")
               
+              //-------------TAG DE ENVIO DO FORMULÁRIO COM SUCESSO---------------               
               tracker.send("event", {
               category: "formulário",
               action: "envio",
               label: "sucesso",
               });
-
+              //-------------FINAL DA TAG-----------------------------------------
 
               //clear all fields
               $('#contactForm').trigger("reset");
