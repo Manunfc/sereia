@@ -938,19 +938,20 @@
   
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TWPM36V');</script>
-<!-- End Google Tag Manager -->
-  
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W4KG6B8');</script>
+  <!-- End Google Tag Manager -->
+
 </head>
 
 <body id="page-top" class="index">
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWPM36V"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4KG6B8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   
   <img src="https://tag-trainer.raccoon.ag/static/shared/balloon.svg" id="call-me-baby" />
   <!-- Navigation -->
@@ -1578,16 +1579,16 @@ botaoOrcamento.addEventListener("click", function(evt){
 //--------------Preencheu o formulário-----------------------------------------------------------------------------------------------------------------------
 
 function formHandler (evt){
-  var alteredInputName = evt.target.getAttribute("id");
+    var alteredInputName = evt.target.getAttribute("id");
 
-  tracker.send("event", {
-      category: "formulário",
-      action: "preenchimento",
-      label: alteredInputName
-  })
+    tracker.send("event", {
+        category: "formulário",
+        action: "preenchimento",
+        label: alteredInputName
+    })
 }
 
-document.querySelector("form").addEventListener("change", formHandler);
+document.querySelector("form").addEventListener("change", formHandler)
 
 //-----------Interagiu com o menu superior------------------------------------------------------------------------------------------------------------------
 var botaoMenu = document.querySelector("button.navbar-toggle");
@@ -2673,6 +2674,15 @@ setTimeout(function(){
                 .append("</button>");
               $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
               $('#success > .alert-danger').append('</div>');
+
+              //-------------TAG DE ENVIO DO FORMULÁRIO COM FALHA-----------------               
+              tracker.send("event", {
+              category: "formulário",
+              action: "envio",
+              label: "falha",
+              });
+              //-------------FINAL DA TAG-----------------------------------------
+
               //clear all fields
               $('#contactForm').trigger("reset");
             },
