@@ -1558,7 +1558,7 @@ function scrollHandler (evt){
       tracker.send("event", {
           category: "scroll",
           action: "rolou a página até o final",
-          CD1: "Hard Coded"
+          cd1: "Hard Coded"
       });
       window.removeEventListener("scroll", scrollHandler);
   };
@@ -1574,7 +1574,7 @@ botaoOrcamento.addEventListener("click", function(evt){
     tracker.send("event", {
         category: "clique",
         action: "Visualizou o formulário",
-        CD1: "Hard Coded"
+        cd1: "Hard Coded"
     });
 });
 
@@ -1587,7 +1587,7 @@ function formHandler (evt){
         category: "formulário",
         action: "preenchimento",
         label: alteredInputName,
-        CD1: "Hard Coded"
+        cd1: "Hard Coded"
     })
 }
 
@@ -1600,7 +1600,7 @@ botaoMenu.addEventListener("click", function(evt){
     tracker.send("event", {
         category: "clique",
         action: "interagiu com o menu",
-        CD1: "Hard Coded"
+        cd1: "Hard Coded"
     });
 });
 
@@ -1623,7 +1623,7 @@ for (let j = 0; j < arrayTwitter.length; j++){
         category: "clique",
         action: "mídias sociais: Twitter",
         label: "Site",
-        CD1: "Hard Coded"
+        cd1: "Hard Coded"
       })
     }
   })
@@ -1646,7 +1646,7 @@ for (let j = 0; j < arrayFacebook.length; j++){
         category: "clique",
         action: "mídias sociais: Facebook",
         label: "Site",
-        CD1: "Hard Coded"
+        cd1: "Hard Coded"
       })
     }
   })
@@ -1669,7 +1669,7 @@ for (let j = 0; j < arrayLinkedin.length; j++){
         category: "clique",
         action: "mídias sociais: Linkedin",
         label: "Site",
-        CD1: "Hard Coded"
+        cd1: "Hard Coded"
       })
     }
   })
@@ -1680,7 +1680,7 @@ setTimeout(function(){
 	tracker.send("event", {
     category: "Tempo",
     action: "Passou mais de um minuto no site",
-    CD1: "Hard Coded"
+    cd1: "Hard Coded"
     });
 },60000);
 
